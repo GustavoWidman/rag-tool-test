@@ -115,12 +115,12 @@ impl From<(String, String)> for ToolResult {
         Self(value.0, value.1)
     }
 }
-impl Into<ToolResultContent> for ToolResult {
-    fn into(self) -> ToolResultContent {
+impl From<ToolResult> for ToolResultContent {
+    fn from(val: ToolResult) -> Self {
         ToolResultContent::text(
             json!({
-                "name": self.0,
-                "result": self.1
+                "name": val.0,
+                "result": val.1
             })
             .to_string(),
         )

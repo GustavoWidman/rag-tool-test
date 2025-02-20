@@ -29,10 +29,10 @@ impl Lookup {
     }
 
     fn search(&self, lookup: &str) -> Result<(f64, String, Value), VectorStoreError> {
-        Ok(futures::executor::block_on(self.index.top_n(lookup, 1))?
+        futures::executor::block_on(self.index.top_n(lookup, 1))?
             .into_iter()
             .next()
-            .ok_or(VectorStoreError::MissingIdError(lookup.to_string()))?)
+            .ok_or(VectorStoreError::MissingIdError(lookup.to_string()))
     }
 }
 
